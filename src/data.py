@@ -240,3 +240,27 @@ hyperparameter_range_dict = {
         }
     }
 }
+
+seaborn_datasets = [
+    'anscombe',
+    'attention',
+    'brain_networks',
+    'car_crashes',
+    'diamonds',
+    'dots',
+    'exercise',
+    'flights',
+    'fmri',
+    'gammas',
+    'geyser',
+    'iris',
+    'mpg',
+    'penguins',
+    'planets',
+    'tips',
+    'titanic'
+]
+
+dataset_name_list = []
+
+dataset_discrb_dict = {}

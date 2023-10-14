@@ -1,0 +1,3 @@
+imdb_test:
+  path: datasets/imdb_test.npz
+  type: np
