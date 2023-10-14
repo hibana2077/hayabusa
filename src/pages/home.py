@@ -1,8 +1,5 @@
-import streamlit as st
 
-def Home():
-    st.title("Home")
-    st.write("Welcome to the home page")
+import streamlit as st
 
 st.title("Home")
 st.write("Welcome to the home page")
