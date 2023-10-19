@@ -264,3 +264,10 @@ seaborn_datasets = [
 dataset_name_list = []
 
 dataset_discrb_dict = {}
+
+data_process_dict_pycaret = {
+    "Classification": {},
+    "Regression": {},
+    "Clustering": {},
+    "Time Series": {},
+}

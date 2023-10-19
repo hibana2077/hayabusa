@@ -49,7 +49,7 @@ with tab2:
     dataset_name_list.remove("load_sample_image")
     dataset_name_list.remove("load_svmlight_file")
     dataset_name_list.remove("load_svmlight_files")
-    sklearn_dataset = st.selectbox("Choose a dataset", dataset_name_list)
+    sklearn_dataset = st.selectbox("Choose a dataset", dataset_name_list, index=None)
     if sklearn_dataset is not None:
         dataset = getattr(datasets, sklearn_dataset)()
         df = pd.DataFrame(dataset.data, columns=dataset.feature_names)
@@ -59,7 +59,7 @@ with tab2:
 
 with tab3:
     st.write("## Seaborn Dataset")
-    seaborn_dataset = st.selectbox("Choose a dataset", seaborn_datasets)
+    seaborn_dataset = st.selectbox("Choose a dataset", seaborn_datasets, index=None)
     if seaborn_dataset is not None:
         df = load_dataset(seaborn_dataset)
         st.write(df)
@@ -69,7 +69,7 @@ with tab3:
 with tab4:
     st.write("## Keras Dataset")
     dataset_name_list = ["mnist", "fashion_mnist", "cifar10", "cifar100", "imdb", "reuters"]
-    keras_dataset = st.selectbox("Choose a dataset", dataset_name_list)
+    keras_dataset = st.selectbox("Choose a dataset", dataset_name_list, index=None)
     if keras_dataset is not None:
         if keras_dataset == "mnist":
             (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -94,7 +94,7 @@ dataset_name = st.text_input("Dataset name")
 button_trigger = st.button("Save")
 
 if df is not None and button_trigger and dataset_name != "" and data_case == "df":
-    df.to_csv(f"datasets/{dataset_name}.csv")
+    print("df")
     #write basic info to yaml
     #if not exist, create
     state = dataset_df_config(dataset_name, config_yaml_path, f"datasets/{dataset_name}.csv", data_case, df)
@@ -104,6 +104,7 @@ if df is not None and button_trigger and dataset_name != "" and data_case == "df
         st.info("Now you can go to Data Process page to process the dataset")
 
 if data_case == "np" and button_trigger and dataset_name != "":
+    print("np")
     state = dataset_np_config(dataset_name, config_yaml_path, f"datasets/{dataset_name}.npz", data_case, x_train, y_train, x_test, y_test)
     
     if state:

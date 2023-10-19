@@ -1,3 +1,9 @@
+breath_cancer:
+  path: datasets/breath_cancer.npz
+  type: np
+breath_cancer1:
+  path: datasets/breath_cancer1.csv
+  type: df
 imdb_test:
   path: datasets/imdb_test.npz
   type: np
