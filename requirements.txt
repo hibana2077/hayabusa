@@ -1,0 +1,6 @@
+pandas
+pycaret[full]
+ccxt
+streamlit
+numpy
+streamlit-pandas-profiling
