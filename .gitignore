@@ -1,0 +1,3 @@
+*.pkl
+*.log
+src/catboost_info
