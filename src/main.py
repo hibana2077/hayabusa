@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-02 23:37:08
+LastEditTime: 2024-01-02 23:38:42
 FilePath: \hayabusa\src\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -51,7 +51,7 @@ if choice == "Modelling":
             setup(df, target=chosen_target)
             setup_df = pull()
             st.dataframe(setup_df)
-            best_model = compare_models()
+            best_model = compare_models(exclude=['lightgbm'])
             compare_df = pull()
             st.dataframe(compare_df)
             save_model(best_model, 'best_model')
@@ -66,7 +66,7 @@ if choice == "Modelling":
             setup(df, target=chosen_target)
             setup_df = pull()
             st.dataframe(setup_df)
-            best_model = compare_models()
+            best_model = compare_models(exclude=['lightgbm'])
             compare_df = pull()
             st.dataframe(compare_df)
             save_model(best_model, 'best_model')
