@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-02 23:38:42
+LastEditTime: 2024-01-02 23:40:06
 FilePath: \hayabusa\src\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -20,6 +20,8 @@ if os.path.exists('./dataset/') == False:
     os.mkdir('./dataset/')
 if os.path.exists('./model/') == False:
     os.mkdir('./model/')
+if os.path.exists('./pipeline/') == False:
+    os.mkdir('./pipeline/')
 
 with st.sidebar:
     st.title("AutoML")
