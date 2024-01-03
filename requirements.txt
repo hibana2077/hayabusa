@@ -1,6 +1,6 @@
 ydata-profiling
 pandas
-pycaret
+pycaret[models]
 streamlit
 numpy
 streamlit-pandas-profiling
