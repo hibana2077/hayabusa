@@ -1,4 +1,4 @@
-pydantic==1.10.13
+ydata-profiling
 pandas
 pycaret
 streamlit

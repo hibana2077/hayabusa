@@ -2,17 +2,18 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-02 23:40:06
+LastEditTime: 2024-01-03 18:23:40
 FilePath: \hayabusa\src\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
 from operator import index
 import streamlit as st
 import plotly.express as px
-import pandas_profiling
+from ydata_profiling import ProfileReport
 import pandas as pd
 import pickle
 import time
+import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
@@ -41,10 +42,11 @@ if choice == "Upload":
 if choice == "Profiling": 
     st.title("Exploratory Data Analysis")
     df:pd.DataFrame = st.session_state['df']
-    profile_df = df.profile_report()
-    st_profile_report(profile_df)
+    pr = ProfileReport(df, title="Profiling Report")
+    st_profile_report(pr)
 
 if choice == "Modelling": 
+    df:pd.DataFrame = st.session_state['df']
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
     ml_task = st.selectbox('Choose the ML Task', ['Classification', 'Regression'])
     if st.button('Run Modelling'):
