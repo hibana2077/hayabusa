@@ -1,0 +1,23 @@
+FROM python:3.11
+
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    python3-dev \
+    build-essential \
+    libpq-dev \
+    htop \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY requirements.txt /app/
+
+RUN pip3 install -r requirements.txt
+
+COPY ./src /app
+
+EXPOSE 80
+
+CMD ["streamlit", "run", "app.py", "--server.port", "80"]
