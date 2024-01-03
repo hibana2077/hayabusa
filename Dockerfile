@@ -8,7 +8,22 @@ RUN apt-get update && apt-get install -y \
     htop \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app
+RUN useradd -m -u 1000 user
+
+USER user
+
+ENV HOME=/home/user \
+	PATH=/home/user/.local/bin:$PATH
+
+WORKDIR $HOME/app
+
+USER root
+
+RUN mkdir -p /data
+
+RUN chmod 777 /data
+
+USER user
 
 WORKDIR /app
 
@@ -18,7 +33,7 @@ RUN pip3 install -U pip
 
 RUN pip3 install -r requirements.txt
 
-COPY ./src /app
+COPY --chown=user ./src /app
 
 EXPOSE 7860
 
