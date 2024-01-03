@@ -1,6 +1,6 @@
+pydantic==1.10.13
 pandas
-pycaret[full]
-ccxt
+pycaret
 streamlit
 numpy
 streamlit-pandas-profiling

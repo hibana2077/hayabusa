@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.9.5
 
 RUN apt-get update && apt-get install -y \
     python3-pip \
@@ -14,10 +14,12 @@ WORKDIR /app
 
 COPY requirements.txt /app/
 
+RUN pip3 install -U pip
+
 RUN pip3 install -r requirements.txt
 
 COPY ./src /app
 
-EXPOSE 80
+EXPOSE 7860
 
-CMD ["streamlit", "run", "app.py", "--server.port", "80"]
+CMD ["streamlit", "run", "main.py", "--server.port", "7860"]
