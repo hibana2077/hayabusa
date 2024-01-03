@@ -8,22 +8,7 @@ RUN apt-get update && apt-get install -y \
     htop \
     && rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -u 1000 user
-
-USER user
-
-ENV HOME=/home/user \
-	PATH=/home/user/.local/bin:$PATH
-
-WORKDIR $HOME/app
-
-USER root
-
-RUN mkdir -p /data
-
-RUN chmod 777 /data
-
-USER user
+RUN mkdir /app
 
 WORKDIR /app
 
@@ -33,8 +18,8 @@ RUN pip3 install -U pip
 
 RUN pip3 install -r requirements.txt
 
-COPY --chown=user ./src /app
+COPY ./src /app
 
-EXPOSE 7860
+EXPOSE 80
 
-CMD ["streamlit", "run", "main.py", "--server.port", "7860"]
+CMD ["streamlit", "run", "main.py", "--server.port", "80"]
