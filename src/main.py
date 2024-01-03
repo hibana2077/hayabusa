@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-03 23:54:30
+LastEditTime: 2024-01-04 01:13:06
 FilePath: \hayabusa\src\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -34,7 +34,7 @@ if choice == "Upload":
     file = st.file_uploader("Upload Your Dataset")
     if file:
         df = pd.read_csv(file, index_col=None)
-        df.drop("Unnamed: 0", axis=1, inplace=True) if "Unnamed: 0" in df.columns else None
+        df.drop("Unnamed: 0", axis=1, inplace=True) if "Unnamed: 0" in df.columns else "No Unnamed: 0 Detected"
         df.to_csv('dataset.csv', index=None)
         st.dataframe(df)
         st.session_state['df'] = df

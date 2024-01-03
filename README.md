@@ -2,7 +2,7 @@
  * @Author: hibana2077 hibana2077@gmail.com
  * @Date: 2023-10-14 12:20:00
  * @LastEditors: hibana2077 hibana2077@gmail.com
- * @LastEditTime: 2024-01-04 01:06:11
+ * @LastEditTime: 2024-01-04 01:11:28
  * @FilePath: \haya\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -17,7 +17,7 @@
 
 ## Introduction
 
-This is a `Lightweight` and `Fast` AutoML framework for small dataset (Less than 200MB).
+This is a `Lightweight` and `Fast` WEB UI AutoML framework for small dataset (Less than 200MB).
 
 ## Installation
 
@@ -79,3 +79,12 @@ Choose the columns you want to predict.
 ### Download
 
 You can download the model and the data pipeline in `pkl` format.
+
+## License
+
+[MIT](./LICENSE)
+
+## Reference
+
+- [Nicholas Renotte](https://youtu.be/xTKoyfCQiiU?si=VOuwpjufxmsEVMhD)
+- [Streamlit](https://docs.streamlit.io/en/stable/)
