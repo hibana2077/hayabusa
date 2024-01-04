@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-04 22:21:47
+LastEditTime: 2024-01-04 22:48:53
 FilePath: \hayabusa\src\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -83,7 +83,12 @@ if choice == "Modelling":
                 pickle.dump(pipeline, f)
 
 if choice == "Download": 
+    st.title("Download the Model and Pipeline")
+
+    st.write("Download the model")
     with open('best_model.pkl', 'rb') as f: 
         st.download_button('Download Model', f, file_name="best_model.pkl")
+    
+    st.write("Download the pipeline")
     with open('pipeline.pkl', 'rb') as f:
         st.download_button('Download Pipeline', f, file_name="pipeline.pkl")

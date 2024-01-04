@@ -1,3 +1,4 @@
 *.pkl
 *.log
 src/catboost_info
+src/dataset.csv
