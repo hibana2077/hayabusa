@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-04 01:13:06
+LastEditTime: 2024-01-04 22:21:47
 FilePath: \hayabusa\src\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -48,11 +48,12 @@ if choice == "Profiling":
 if choice == "Modelling": 
     df:pd.DataFrame = st.session_state['df']
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
+    drop_columns = st.multiselect('Choose the Columns to Drop', df.columns)
     ml_task = st.selectbox('Choose the ML Task', ['Classification', 'Regression'])
     if st.button('Run Modelling'):
         if ml_task == 'Classification':
             from pycaret.classification import setup, compare_models, pull, save_model, get_config
-            setup(df, target=chosen_target)
+            setup(df, target=chosen_target, ignore_features=drop_columns)
             setup_df = pull()
             st.dataframe(setup_df)
             best_model = compare_models(exclude=['lightgbm'])
@@ -67,7 +68,7 @@ if choice == "Modelling":
                 pickle.dump(pipeline, f)
         else:
             from pycaret.regression import setup, compare_models, pull, save_model
-            setup(df, target=chosen_target)
+            setup(df, target=chosen_target, ignore_features=drop_columns)
             setup_df = pull()
             st.dataframe(setup_df)
             best_model = compare_models(exclude=['lightgbm'])
