@@ -2,3 +2,4 @@
 *.log
 src/catboost_info
 src/dataset.csv
+qiskit-vscode-log.out
