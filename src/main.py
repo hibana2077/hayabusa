@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-01-02 21:43:38
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-01-14 14:14:35
+LastEditTime: 2024-01-14 14:22:58
 FilePath: \hayabusa\src\main.py
 Description: main page
 '''
@@ -50,11 +50,12 @@ if choice == "Modelling":
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
     drop_columns = st.multiselect('Choose the Columns to Drop', df.columns)
     train_size = st.slider('Choose the Train Size', 0.1, 0.9, 0.7)
+    enable_preprocessing = st.checkbox('Enable Preprocessing')
     ml_task = st.selectbox('Choose the ML Task', ['Classification', 'Regression'])
     if st.button('Run Modelling'):
         if ml_task == 'Classification':
             from pycaret.classification import setup, compare_models, pull, save_model, get_config
-            setup(df, target=chosen_target, ignore_features=drop_columns, train_size=train_size)
+            setup(df, target=chosen_target, ignore_features=drop_columns, train_size=train_size, preprocess=enable_preprocessing)
             setup_df = pull()
             st.dataframe(setup_df)
             best_model = compare_models(exclude=['lightgbm'])
@@ -69,7 +70,7 @@ if choice == "Modelling":
                 pickle.dump(pipeline, f)
         else:
             from pycaret.regression import setup, compare_models, pull, save_model
-            setup(df, target=chosen_target, ignore_features=drop_columns, train_size=train_size)
+            setup(df, target=chosen_target, ignore_features=drop_columns, train_size=train_size, preprocess=enable_preprocessing)
             setup_df = pull()
             st.dataframe(setup_df)
             best_model = compare_models(exclude=['lightgbm'])
